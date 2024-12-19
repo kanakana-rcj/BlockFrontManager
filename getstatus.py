@@ -92,7 +92,7 @@ def get_system_neoforge_version():
     version = get_neoforge_version_from_filename(files[neoforge_index])
     return version
     
-if __name__ == "__main__":
+def get_status():
     
     blockfront_url = get_latest_blockfront_url()
     print("latest blockfront URL:", blockfront_url)
