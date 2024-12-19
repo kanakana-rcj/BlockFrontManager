@@ -3,3 +3,4 @@ test.py
 venv
 *.jar
 *.log
+__pycache__

@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-import re
 import os
 from dotenv import load_dotenv
 
@@ -22,7 +21,7 @@ def get_latest_blockfront_url():
     else:
         print("<a> tag not found")
 
-def get_neoforge_url(version:str):
+def get_neoforge_url_from_version(version:str):
     url = "https://maven.neoforged.net/releases/net/neoforged/neoforge/" + version + "/neoforge-" + version + "-installer.jar"
     return url
 
@@ -108,7 +107,7 @@ if __name__ == "__main__":
     required_neoforge_version = get_required_neoforge_version()
     print("BlockFront requires NeoForge version:", required_neoforge_version)
 
-    neoforge_url = get_neoforge_url(required_neoforge_version)
+    neoforge_url = get_neoforge_url_from_version(required_neoforge_version)
     print("required neoforge URL:", neoforge_url)
 
     neoforge_filename = get_neoforge_filename_from_version(required_neoforge_version)

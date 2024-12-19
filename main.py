@@ -1,26 +1,34 @@
 import requests
 from bs4 import BeautifulSoup
-import re
+from dotenv import load_dotenv
+import os 
+import getstatus
 
-url = 'https://modrinth.com/mod/blockfront/versions'
-response = requests.get(url)
-soup = BeautifulSoup(response.text, "html.parser")
+load_dotenv()
+BLOCKFRONT_DIR = os.environ.get("BLOCKFRONT_PATH")
+NEOFORGE_DIR = os.environ.get("NEOFORGE_PATH")
 
-#arial-label : Download　の aタグの中で最初のものを取得
-a_tag = soup.find('a', {'aria-label': 'Download'})
+blockfront_url = getstatus.get_latest_blockfront_url()
+blockfront_filename = getstatus.get_blockfront_filename_from_url(blockfront_url)
 
-if a_tag:
-    latest_modfile_url = a_tag.get('href')
-    print("latest modfile URL of blockfront:", latest_modfile_url)
-    
-    match = re.search(r"BlockFront-.*", latest_modfile_url)
-    filename = match.group()
-    print("blockfront modfile name: ", filename)
-    
-    modfile = requests.get(latest_modfile_url, allow_redirects=True).content
-    with open(filename , mode = 'wb') as f:
-        f.write(modfile)
-    
-else:
-    print("<a> tag not found")
+print("getting latest blockfront file:", getstatus.get_blockfront_version_from_filename(blockfront_filename))
+blockfront_file = requests.get(blockfront_url, allow_redirects=True).content
 
+blockfront_path = BLOCKFRONT_DIR + "/" + blockfront_filename
+with open(blockfront_path, mode = 'wb') as f:
+    f.write(blockfront_file)
+print("saved blockfront to", blockfront_path)
+
+neoforge_version = getstatus.get_required_neoforge_version()
+print("blockfront requires neoforge", neoforge_version)
+
+neoforge_url = getstatus.get_neoforge_url_from_version(neoforge_version)
+neoforge_filename = getstatus.get_neoforge_filename_from_version(neoforge_version)
+
+print("getting required neoforge file:", neoforge_version)
+neoforge_file = requests.get(neoforge_url, allow_redirects=True).content
+
+neoforge_path = NEOFORGE_DIR + "/" + neoforge_filename
+with open(neoforge_path, mode = 'wb') as f:
+    f.write(neoforge_file)
+print("saved neoforge to", neoforge_path)
