@@ -11,6 +11,13 @@ def update():
     blockfront_url = getstatus.get_latest_blockfront_url()
     blockfront_filename = getstatus.get_blockfront_filename_from_url(blockfront_url)
 
+    system_blockfront_filename = getstatus.get_system_blockfront_filename()
+
+    if blockfront_filename != system_blockfront_filename:
+        print("delete old blockfront file")
+        system_blockfront_path = BLOCKFRONT_DIR + "/" + system_blockfront_filename
+        os.remove(system_blockfront_path)
+
     print("getting latest blockfront file:", getstatus.get_blockfront_version_from_filename(blockfront_filename))
     blockfront_file = requests.get(blockfront_url, allow_redirects=True).content
 
@@ -24,6 +31,13 @@ def update():
 
     neoforge_url = getstatus.get_neoforge_url_from_version(neoforge_version)
     neoforge_filename = getstatus.get_neoforge_filename_from_version(neoforge_version)
+
+    system_neoforge_filename = getstatus.get_system_neoforge_filename()
+
+    if neoforge_filename != system_neoforge_filename:
+        print("delete old neoforge file")
+        system_neoforge_path = NEOFORGE_DIR + "/" + system_neoforge_filename
+        os.remove(system_neoforge_path)
 
     print("getting required neoforge file:", neoforge_version)
     neoforge_file = requests.get(neoforge_url, allow_redirects=True).content

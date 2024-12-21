@@ -64,7 +64,7 @@ def get_blockfront_version_from_filename(filename:str):
     version = filename[second_hyphen_index+1: third_hyphen_index]
     return version
 
-def get_system_blockfront_version():
+def get_system_blockfront_filename():
     files = os.listdir(BLOCKFRONT_PATH)
     blockfront_index = 0
     for i in range(len(files)):
@@ -75,10 +75,14 @@ def get_system_blockfront_version():
             if i == len(files) - 1:
                 print("BlockFront was not found in your system")
                 break
-    version = get_blockfront_version_from_filename(files[blockfront_index])
+    return files[blockfront_index]
+
+def get_system_blockfront_version():
+    filename = get_system_blockfront_filename()
+    version = get_blockfront_version_from_filename(filename)
     return version
 
-def get_system_neoforge_version():
+def get_system_neoforge_filename():
     files = os.listdir(NEOFORGE_PATH)
     neoforge_index = 0
     for i in range(len(files)):
@@ -89,7 +93,11 @@ def get_system_neoforge_version():
             if i == len(files) - 1:
                 print("NeoForge was not found in your system")
                 break
-    version = get_neoforge_version_from_filename(files[neoforge_index])
+    return files[neoforge_index]
+
+def get_system_neoforge_version():
+    filename = get_system_neoforge_filename()
+    version = get_neoforge_version_from_filename(filename)
     return version
     
 def get_status():
