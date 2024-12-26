@@ -1,6 +1,6 @@
 import sys
-import getstatus
-import update
+import getstatus as getstatus
+import update as update
 
 if __name__ == "__main__":
     args = sys.argv

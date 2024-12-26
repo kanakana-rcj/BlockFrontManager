@@ -1,18 +1,14 @@
 import requests
-from dotenv import load_dotenv
-import os 
-import getstatus
-
-load_dotenv()
-BLOCKFRONT_DIR = os.environ.get("BLOCKFRONT_PATH")
-NEOFORGE_DIR = os.environ.get("NEOFORGE_PATH")
+import getstatus as getstatus
+import os
+from config import BLOCKFRONT_PATH, NEOFORGE_PATH
 
 def delete_old_blockfront(filename):
     system_blockfront_filename = getstatus.get_system_blockfront_filename()
 
     if filename != system_blockfront_filename:
         print("delete old blockfront file")
-        system_blockfront_path = BLOCKFRONT_DIR + "/" + system_blockfront_filename
+        system_blockfront_path = BLOCKFRONT_PATH + "/" + system_blockfront_filename
         os.remove(system_blockfront_path)
 
 def delete_old_neoforge(filename):
@@ -20,13 +16,13 @@ def delete_old_neoforge(filename):
 
     if filename != system_neoforge_filename:
         print("delete old neoforge file")
-        system_neoforge_path = NEOFORGE_DIR + "/" + system_neoforge_filename
+        system_neoforge_path = NEOFORGE_PATH + "/" + system_neoforge_filename
         os.remove(system_neoforge_path)
 
 def download_blockfront(url, filename):
     blockfront_file = requests.get(url, allow_redirects=True).content
 
-    blockfront_path = BLOCKFRONT_DIR + "/" + filename
+    blockfront_path = BLOCKFRONT_PATH + "/" + filename
     with open(blockfront_path, mode = 'wb') as f:
         f.write(blockfront_file)
     print("saved blockfront to", blockfront_path)
@@ -34,7 +30,7 @@ def download_blockfront(url, filename):
 def download_neoforge(url, filename):
     neoforge_file = requests.get(url, allow_redirects=True).content
 
-    neoforge_path = NEOFORGE_DIR + "/" + filename
+    neoforge_path = NEOFORGE_PATH + "/" + filename
     with open(neoforge_path, mode = 'wb') as f:
         f.write(neoforge_file)
     print("saved neoforge to", neoforge_path)
