@@ -1,16 +1,23 @@
 # BlockFrontManager
-my version-manager of blockfront
+BlockFrontManager is version-manager of blockfront, which is the mod of MineCraft.
+
+## Supported OS
+We support GNU/Linux 3.2.0 now.
 
 ## how to use
-set enviroment variables in .env like this
+### setting env
+set enviroment variables in .env 
 ```
 BLOCKFRONT_PATH = "C/Users/username/AppData/Roaming/.minecraft/mods"
 NEOFORGE_PATH = "C/Users/username/Documents/minecraft/blockfront"
 ```
 
-then install library from requirements.txt, and use command like this
+### using command
+You can use command with following options: "status", and "update".
+
+With "status" option, you can collect information of Blockfront and neoforge.
 ```
-$ python3 ./main.py status
+$ ./main.bin status
 latest BlockFront URL: https://cdn.modrinth.com/data/hTexWmdS/versions/4fh84LES/BlockFront-1.21.1-0.6.0.2b-RELEASE.jar
 BlockFront latest file:  BlockFront-1.21.1-0.6.0.2b-RELEASE.jar
 BlockFront latest version:  0.6.0.2b
@@ -26,9 +33,9 @@ BlockFront is up to date
 NeoForge is up to date
 ```
 
-if you need to update, you can use update option like: 
+With "update" option, you can update your BlockFront and Neoforge.
 ```
-$ python3 ./main.py update
+$ ./main.bin update
 getting latest BlockFront file: 0.6.0.2b
 saved BlockFront to /mnt/c/Users/Username/AppData/Roaming/.minecraft/mods/BlockFront-1.21.1-0.6.0.2b-RELEASE.jar
 BlockFront requires NeoForge 21.1.77
