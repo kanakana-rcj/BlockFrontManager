@@ -6,3 +6,4 @@ win_venv
 *.log
 __pycache__
 main.build
+.ruff_cache

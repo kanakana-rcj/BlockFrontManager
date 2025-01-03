@@ -1,0 +1,17 @@
+[project]
+name = "BlockFrontManager"
+version = "0.1.0"
+readme = "README.md"
+requires-python = ">=3.13"
+
+[tool.ruff]
+line-length = 127
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint]
+select = ["ALL"]
+
+[tool.ruff.lint.pylint]
+max-args = 9
