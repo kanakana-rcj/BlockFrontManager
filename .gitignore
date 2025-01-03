@@ -1,6 +1,8 @@
 .env
 test.py
 venv
+win_venv
 *.jar
 *.log
 __pycache__
+main.build

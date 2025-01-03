@@ -2,7 +2,9 @@
 BlockFrontManager is version-manager of blockfront, which is the mod of MineCraft.
 
 ## Supported OS
-We support GNU/Linux 3.2.0 now.
+GNU/Linux 3.2.0, and Windows 11.
+
+For Linux, you can use main.bin. For windows, you can use main.exe.
 
 ## how to use
 ### setting env
@@ -18,6 +20,7 @@ You can use command with following options: "status", and "update".
 With "status" option, you can collect information of Blockfront and neoforge.
 ```
 $ ./main.bin status
+
 latest BlockFront URL: https://cdn.modrinth.com/data/hTexWmdS/versions/4fh84LES/BlockFront-1.21.1-0.6.0.2b-RELEASE.jar
 BlockFront latest file:  BlockFront-1.21.1-0.6.0.2b-RELEASE.jar
 BlockFront latest version:  0.6.0.2b
