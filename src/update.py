@@ -1,41 +1,72 @@
+"""Functions to update blockfront and neoforge to the latest version."""
+from pathlib import Path
+
 import requests
-import getstatus as getstatus
-import os
+
+import getstatus
 from config import BLOCKFRONT_PATH, NEOFORGE_PATH
 
-def delete_old_blockfront(filename):
+
+def delete_old_blockfront(filename: str) -> None:
+    """Delete old blockfront file which exicts in system.
+
+    Args:
+        filename: Name of the blockfront file to be deleted.
+
+    """
     system_blockfront_filename = getstatus.get_system_blockfront_filename()
 
     if filename != system_blockfront_filename:
         print("delete old blockfront file")
         system_blockfront_path = BLOCKFRONT_PATH + "/" + system_blockfront_filename
-        os.remove(system_blockfront_path)
+        Path(system_blockfront_path).unlink()
 
-def delete_old_neoforge(filename):
+def delete_old_neoforge(filename: str) -> None:
+    """Delete old Neoforge installer file which exicts in system.
+
+    Args:
+        filename: Name of the Neoforge installer file to be deleted.
+
+    """
     system_neoforge_filename = getstatus.get_system_neoforge_filename()
 
     if filename != system_neoforge_filename:
         print("delete old neoforge file")
         system_neoforge_path = NEOFORGE_PATH + "/" + system_neoforge_filename
-        os.remove(system_neoforge_path)
+        Path(system_neoforge_path).unlink()
 
-def download_blockfront(url, filename):
-    blockfront_file = requests.get(url, allow_redirects=True).content
+def download_blockfront(url: str, filename: str) -> None:
+    """Download blockfront file from given url.
+
+    Args:
+        url: URL of the blockfront file to be downloaded.
+        filename: Name of the blockfront file to be deleted.
+
+    """
+    blockfront_file = requests.get(url, timeout=10, allow_redirects=True).content
 
     blockfront_path = BLOCKFRONT_PATH + "/" + filename
-    with open(blockfront_path, mode = 'wb') as f:
+    with Path(blockfront_path).open("wb") as f:
         f.write(blockfront_file)
     print("saved blockfront to", blockfront_path)
 
-def download_neoforge(url, filename):
-    neoforge_file = requests.get(url, allow_redirects=True).content
+def download_neoforge(url: str, filename: str) -> None:
+    """Download neoforge installer file from given url.
+
+    Args:
+        url: URL of the neoforge installer file to be downloaded.
+        filename: Name of the neoforge installer file to be deleted.
+
+    """
+    neoforge_file = requests.get(url, timeout=10, allow_redirects=True).content
 
     neoforge_path = NEOFORGE_PATH + "/" + filename
-    with open(neoforge_path, mode = 'wb') as f:
+    with Path(neoforge_path).open("wb") as f:
         f.write(neoforge_file)
     print("saved neoforge to", neoforge_path)
 
-def update():
+def update() -> None:
+    """Update blockfront to the latest version and neoforg to the required version."""
     blockfront_url = getstatus.get_latest_blockfront_url()
     blockfront_filename = getstatus.get_blockfront_filename_from_url(blockfront_url)
 
