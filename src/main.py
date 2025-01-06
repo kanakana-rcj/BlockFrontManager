@@ -8,16 +8,31 @@ import sys
 import getstatus
 import update
 
+ARGUMENT_COUNT = 2
+
 if __name__ == "__main__":
     args = sys.argv
-    if len(args) == 2:
-        if args[1] == "update":
-            update.update()
-        elif args[1] == "status":
-            getstatus.get_status()
-        else:
-            print("argument must be 'update' or 'status'")
-            sys.exit(1)
+    if len(args) == ARGUMENT_COUNT:
+        while True:
+            if args[1] == "update":
+                update.update()
+                break
+            elif args[1] == "status":
+                getstatus.get_status()
+                break
+            else:
+                print("argument must be 'update' or 'status'")
+                sys.exit(1)
+
     else:
-        print("need one argument: 'update' or 'status'")
-        sys.exit(1)
+        while True:
+            print("please enter an argument ('update' or 'status'): ")
+            argument = input()
+            if argument == "update":
+                update.update()
+                break
+            elif argument == "status":
+                getstatus.get_status()
+                break
+            else:
+                print("argument must be 'update' or 'status'")
