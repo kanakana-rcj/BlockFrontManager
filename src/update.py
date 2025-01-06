@@ -77,11 +77,19 @@ def update() -> None:
 
     neoforge_version = getstatus.get_required_neoforge_version()
     print("blockfront requires neoforge", neoforge_version)
+    system_neoforge_version = getstatus.get_system_neoforge_version()
+    print("system has neoforge", system_neoforge_version)
 
-    neoforge_url = getstatus.get_neoforge_url_from_version(neoforge_version)
-    neoforge_filename = getstatus.get_neoforge_filename_from_version(neoforge_version)
+    if system_neoforge_version == neoforge_version:
+        print("neoforge is up to date")
 
-    delete_old_neoforge(neoforge_filename)
+    else:
+        print("neoforge needs to be updated")
 
-    print("getting required neoforge file:", neoforge_version)
-    download_neoforge(neoforge_url, neoforge_filename)
+        neoforge_url = getstatus.get_neoforge_url_from_version(neoforge_version)
+        neoforge_filename = getstatus.get_neoforge_filename_from_version(neoforge_version)
+
+        delete_old_neoforge(neoforge_filename)
+
+        print("getting required neoforge file:", neoforge_version)
+        download_neoforge(neoforge_url, neoforge_filename)
