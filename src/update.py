@@ -93,3 +93,5 @@ def update() -> None:
 
         print("getting required neoforge file:", neoforge_version)
         download_neoforge(neoforge_url, neoforge_filename)
+        print("Update is over. You should install neoforge from new installer now.")
+        print("The neoforge installer is in :", NEOFORGE_PATH)
