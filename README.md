@@ -1,6 +1,9 @@
 # BlockFrontManager
 BlockFrontManager is version-manager of blockfront, which is the mod of MineCraft.
 
+## Using language
+<img src="https://img.shields.io/badge/-python-blue?style=flat&logo=python&logoColor=yellow">
+
 ## Supported OS
 GNU/Linux 3.2.0, and Windows 11.
 
