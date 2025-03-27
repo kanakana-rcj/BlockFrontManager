@@ -21,8 +21,8 @@ NEOFORGE_PATH = "C/Users/username/Documents/minecraft/blockfront"
 You can use command with following options: "status", and "update".
 
 With "status" option, you can collect information of Blockfront and neoforge.
-```
-$ ./main.bin status
+```bash
+$ python ./main.py status
 
 latest BlockFront URL: https://cdn.modrinth.com/data/hTexWmdS/versions/4fh84LES/BlockFront-1.21.1-0.6.0.2b-RELEASE.jar
 BlockFront latest file:  BlockFront-1.21.1-0.6.0.2b-RELEASE.jar
@@ -40,8 +40,8 @@ NeoForge is up to date
 ```
 
 With "update" option, you can update your BlockFront and Neoforge.
-```
-$ ./main.bin update
+```bash
+$ python ./main.py update
 getting latest BlockFront file: 0.6.0.2b
 saved BlockFront to /mnt/c/Users/Username/AppData/Roaming/.minecraft/mods/BlockFront-1.21.1-0.6.0.2b-RELEASE.jar
 BlockFront requires NeoForge 21.1.77
