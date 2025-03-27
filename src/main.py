@@ -5,34 +5,45 @@ If 'status' is given, the program will display the status of the user's favorite
 """
 import sys
 
-import getstatus
-import update
+from status import Status
+from update import Updater
 
 ARGUMENT_COUNT = 2
 
-if __name__ == "__main__":
-    args = sys.argv
-    if len(args) == ARGUMENT_COUNT:
-        while True:
-            if args[1] == "update":
-                update.update()
-                break
-            elif args[1] == "status":
-                getstatus.get_status()
-                break
-            else:
-                print("argument must be 'update' or 'status'")
-                sys.exit(1)
+class Main:
 
-    else:
-        while True:
-            print("please enter an argument ('update' or 'status'): ")
-            argument = input()
-            if argument == "update":
-                update.update()
-                break
-            elif argument == "status":
-                getstatus.get_status()
-                break
-            else:
-                print("argument must be 'update' or 'status'")
+    def __init__(self) -> None:
+        self.status = Status()
+        self.updater = Updater()
+
+    def run(self, args) -> None:
+        args = sys.argv
+        if len(args) == ARGUMENT_COUNT:
+            while True:
+                if args[1] == "update":
+                    self.updater.update()
+                    break
+                elif args[1] == "status":
+                    self.status.get_status()
+                    break
+                else:
+                    print("argument must be 'update' or 'status'")
+                    sys.exit(1)
+
+        else:
+            while True:
+                print("please enter an argument ('update' or 'status'): ")
+                argument = input()
+                if argument == "update":
+                    self.updater.update()
+                    break
+                elif argument == "status":
+                    self.status.get_status()
+                    break
+                else:
+                    print("argument must be 'update' or 'status'")
+
+if __name__ == "__main__":
+
+    main = Main()
+    main.run(sys.argv)
