@@ -1,8 +1,9 @@
 """Functions to update neoforge to the latest version."""
-from neoforge_status import NeoForgeStatus
 from config import NEOFORGE_PATH
-from updater_base import UpdaterBase
-from blockfront_status import BlockFrontStatus
+from status.blockfront_status import BlockFrontStatus
+from status.neoforge_status import NeoForgeStatus
+from update.updater_base import UpdaterBase
+
 
 class NeoForgeUpdater(UpdaterBase):
 

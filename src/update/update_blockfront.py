@@ -1,7 +1,8 @@
 """Functions to update blockfront to the latest version."""
-from blockfront_status import BlockFrontStatus
 from config import BLOCKFRONT_PATH
-from updater_base import UpdaterBase
+from status.blockfront_status import BlockFrontStatus
+from update.updater_base import UpdaterBase
+
 
 class BlockFrontUpdater(UpdaterBase):
 
