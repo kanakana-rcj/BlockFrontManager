@@ -5,8 +5,8 @@ If 'status' is given, the program will display the status of the user's favorite
 """
 import sys
 
-from status import Status
-from update import Updater
+from status.status import Status
+from update.update import Updater
 
 ARGUMENT_COUNT = 2
 
