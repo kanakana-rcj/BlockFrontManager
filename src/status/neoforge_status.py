@@ -1,6 +1,6 @@
 from config import NEOFORGE_PATH
+from status.status_base import StatusBase
 
-from status_base import StatusBase
 
 class NeoForgeStatus(StatusBase):
 

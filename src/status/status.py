@@ -1,8 +1,8 @@
 """Functions to get the status of blockfront and neoforge in the system and internet."""
 
-from blockfront_status import BlockFrontStatus
+from status.blockfront_status import BlockFrontStatus
+from status.neoforge_status import NeoForgeStatus
 
-from neoforge_status import NeoForgeStatus
 
 class Status:
 

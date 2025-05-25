@@ -1,7 +1,7 @@
 """Functions to update blockfront and neoforge to the latest version."""
 
-from update_blockfront import BlockFrontUpdater
-from update_neoforge import NeoForgeUpdater
+from update.update_blockfront import BlockFrontUpdater
+from update.update_neoforge import NeoForgeUpdater
 
 
 class Updater:

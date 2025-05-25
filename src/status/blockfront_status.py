@@ -1,10 +1,10 @@
 """Functions to get the status of blockfront in the system and internet."""
-from bs4 import BeautifulSoup
 import requests
+from bs4 import BeautifulSoup
 
 from config import BLOCKFRONT_PATH
+from status.status_base import StatusBase
 
-from status_base import StatusBase
 
 class BlockFrontStatus(StatusBase):
 
