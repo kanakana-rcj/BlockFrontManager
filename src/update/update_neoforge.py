@@ -1,4 +1,6 @@
 """Functions to update neoforge to the latest version."""
+from pathlib import Path
+
 from config import NEOFORGE_PATH
 from status.blockfront_status import BlockFrontStatus
 from status.neoforge_status import NeoForgeStatus
@@ -27,7 +29,7 @@ class NeoForgeUpdater(UpdaterBase):
             url = self.neo_status.get_url_from_version(new_version)
             new_filename = self.neo_status.get_filename_from_version(new_version)
 
-            old_file_path = NEOFORGE_PATH + "/" + self.neo_status.get_system_filename(NEOFORGE_PATH, "neoforge")
+            old_file_path = Path(NEOFORGE_PATH) / self.neo_status.get_system_filename(NEOFORGE_PATH, "neoforge")
             self.delete_old_file(old_file_path)
 
             print("getting required neoforge file:", new_version)
