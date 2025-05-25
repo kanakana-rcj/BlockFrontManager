@@ -26,7 +26,7 @@ class NeoForgeUpdater(UpdaterBase):
             url = self.neo_status.get_url_from_version(new_version)
             new_filename = self.neo_status.get_filename_from_version(new_version)
 
-            old_file_path = NEOFORGE_PATH + "/" + self.neo_status.get_system_filename()
+            old_file_path = NEOFORGE_PATH + "/" + self.neo_status.get_system_filename(NEOFORGE_PATH, "neoforge")
             self.delete_old_file(old_file_path)
 
             print("getting required neoforge file:", new_version)
